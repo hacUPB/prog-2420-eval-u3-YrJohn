@@ -18,7 +18,7 @@ def registrar_avion(matricula, modelo, capacidad):
         "matricula": matricula,
         "modelo": modelo,
         "capacidad": capacidad,
-        "estado": "en servicio", #Al inicio voy a suponer que el avion esta en servicio
+        "estado": "operando", #Al inicio voy a suponer que el avion esta operando
         "historial": []
     }
 
@@ -46,7 +46,35 @@ def registrar_mantenimiento(matricula, fecha, tipo, tecnico, observaciones=""):
     if tipo =="correctivo":
         aviones [matricula]["estado"] = "en mantenimiento"
 
+    if tipo == "preventivo":
+        aviones [matricula]["estado"] = "Operando"
+
+
+
+
     print(f"mantenimiento registrado con exito al avion con matricula numero {matricula}")
+
+
+#este def lo uso para organizar los mantenimientos, ya que solo imprilos hace que se vea desorganizado
+def ver_historial(matricula):
+    #verifivo si el avion existe
+    if matricula not in aviones:
+        print(f"no hay ningun avion con el numero de matricula{matricula}")
+        return
+    
+    historial= aviones[matricula]["historial"] #Saco el historial del avion a otra variable para poder utilizarlo mas facilmente
+
+    if not historial: #si el avion no tienen mantemientos asciados se lo informo al usuario
+        print(f"el avion {matricula} no tiene registros de mantenimiento asociados")
+        return
+    
+    print(f"Historial de mantenimmiento para el avion {matricula}:")
+    for i, mantenimiento in enumerate(historial, 1): #enumero los mantenimientos para asi poder mostrarlos de forma mucho mas organizada
+        print(f"mantenimiento {i}:")
+        print(f"{mantenimiento['fecha']}")
+        print(f"{mantenimiento['tipo']}")
+        print(f"{mantenimiento['tecnico']}")
+        print(f"{mantenimiento['observaciones']}")
 
 
 
@@ -54,8 +82,9 @@ def registrar_mantenimiento(matricula, fecha, tipo, tecnico, observaciones=""):
 
 registrar_avion("B123", "BOEING 767", 180)
 
-registrar_mantenimiento("B123", "2024-10-24", "preventivo", "john", "revision usual")
-registrar_mantenimiento("B123", "2025-10-94", "correctivo", "john", "revision")
+#registrar_mantenimiento("B123", "2024-10-24", "preventivo", "john", "revision usual")
+#registrar_mantenimiento("B123", "2025-10-94", "correctivo", "john", "revision")
+#registrar_mantenimiento("B123", "2024-10-24", "preventivo", "john", "revision usual")
 
-
+ver_historial("B123")
 print(aviones)
