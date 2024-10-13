@@ -1,7 +1,7 @@
-#zona de diccionarios vacios
+#zona de diccionarios y conjuntos vacios
 aviones = {}
-tecnicos_disponibles = {}
-tecnicos_ocupados = {}
+tecnicos_disponibles = set()
+tecnicos_ocupados = set()
 tecnicos = {}
 
 
@@ -95,10 +95,11 @@ def añadir_tecnico(nombre, especialidad):
         if nombre in tecnicos:
             print(f"El tecnico {nombre} ya se encuentra registrado")
             return
-        
+        tecnicos_disponibles.add(nombre,)
         tecnicos[nombre] = {
             "especialidad": especialidad,
         }
+       
 
         print(f"tecnico añadido exitosamente")
 
@@ -106,9 +107,35 @@ def añadir_tecnico(nombre, especialidad):
 def eliminar_tecnico(nombre):
     if nombre in tecnicos:
         del tecnicos[nombre]
+        tecnicos_disponibles.remove(nombre) #supondre que el tecnico al momento de eliminarlo no se encuentra realizando ningun trabajo
         print(f"Tecnico {nombre} eliminado exitosamente")
         return
     print(f"el tecnico {nombre} no se encuentra registrado")
+
+
+def asignar_tecnico(nombre):
+    if nombre in tecnicos_disponibles:
+        tecnicos_disponibles.remove(nombre)
+        tecnicos_ocupados.add(nombre) #primero elimino el tecnico de estar disponibl y lo coloco ocupado 
+        print(f"el tecnico {nombre} ahora se encuentra ocupado")
+    else:
+        print(f"el tecnico {nombre} no se encuentra disponible para asignacion")
+
+def desasignar_tecnico(nombre):
+    if nombre in tecnicos_ocupados:
+        tecnicos_ocupados.remove(nombre) #elimino el tecnico de estar ocupado a estar disponible
+        tecnicos_disponibles.add(nombre)
+        print(f"el tecnico {nombre} ahora se encuentra disponible")
+    else: 
+        print(f"el tecnico {nombre} no se encuentra ocupado")
+
+def ver_tecnico(nombre):
+    if nombre in tecnicos_disponibles:
+        print(f"El tecnico {nombre} se encuentra disponible")
+    elif nombre in tecnicos_ocupados:
+        print(f"El tecnico se encuentra ocupado en el momento")
+    else:
+        print(f"el tecnico {nombre} no se encuentra registrado")
 
 
 registrar_avion("B123", "BOEING 767", 180)
@@ -123,6 +150,15 @@ estado_avion("B123")
 ver_historial("B123")
 añadir_tecnico("John", "Mecanico")
 
+
+
+
+asignar_tecnico("John")
+desasignar_tecnico("John")
+
 eliminar_tecnico("John") 
 print(aviones)
 print(tecnicos)
+
+print(tecnicos_disponibles)
+print(tecnicos_ocupados)
