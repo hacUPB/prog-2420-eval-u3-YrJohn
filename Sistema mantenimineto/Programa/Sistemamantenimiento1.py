@@ -1,7 +1,8 @@
 #zona de diccionarios vacios
 aviones = {}
-
-
+tecnicos_disponibles = {}
+tecnicos_ocupados = {}
+tecnicos = {}
 
 
 #Zona de funciones (def)
@@ -76,15 +77,52 @@ def ver_historial(matricula):
         print(f"{mantenimiento['tecnico']}")
         print(f"{mantenimiento['observaciones']}")
 
+def estado_avion(matricula):
+    #imprime el estado de la flota de aviones
+    if matricula not in aviones:
+        print(f"No se encontro ningun avion con matricula {matricula}")
+        return
+    
+    estado = aviones[matricula]["estado"]
+
+    print(f"El estado del avion con matricula{matricula} es {estado}")
 
 
+
+
+def añadir_tecnico(nombre, especialidad):
+        #añade los tecnicos a una lista
+        if nombre in tecnicos:
+            print(f"El tecnico {nombre} ya se encuentra registrado")
+            return
+        
+        tecnicos[nombre] = {
+            "especialidad": especialidad,
+        }
+
+        print(f"tecnico añadido exitosamente")
+
+
+def eliminar_tecnico(nombre):
+    if nombre in tecnicos:
+        del tecnicos[nombre]
+        print(f"Tecnico {nombre} eliminado exitosamente")
+        return
+    print(f"el tecnico {nombre} no se encuentra registrado")
 
 
 registrar_avion("B123", "BOEING 767", 180)
+registrar_avion("B1234", "BOEING 767", 180)
 
-#registrar_mantenimiento("B123", "2024-10-24", "preventivo", "john", "revision usual")
-#registrar_mantenimiento("B123", "2025-10-94", "correctivo", "john", "revision")
-#registrar_mantenimiento("B123", "2024-10-24", "preventivo", "john", "revision usual")
+registrar_mantenimiento("B123", "2024-10-24", "preventivo", "john", "revision usual")
+registrar_mantenimiento("B123", "2025-10-94", "correctivo", "john", "revision")
+registrar_mantenimiento("B123", "2024-10-24", "preventivo", "john", "revision usual")
 
+
+estado_avion("B123")
 ver_historial("B123")
+añadir_tecnico("John", "Mecanico")
+
+eliminar_tecnico("John") 
 print(aviones)
+print(tecnicos)
