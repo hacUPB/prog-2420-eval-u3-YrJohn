@@ -1,10 +1,31 @@
 Proyecto: Sistema de seguimiento a mantenimientos de aeronaves
-Nombre: 
+
+Nombre: ICARO
+
 Descripcion: Este codigo seria un sistema de seguimiento para el mantenimiento de uno o mas aviones, incluiria los modelos, placas y toda ladocumentacion necesaria para identificar de manera precisa al avion al que se le hizo dicho mantenimiento, de igual manera incluiria fecha (de manteminimiento), asi como el tipo de mantenimiento y el tecnico encargado de dicho mantenimiento.
-Estructura: En este proyecto se usaran diccionarios para guardar toda la documentacion de los aviones, su matricula, modelo, numero de serie y sus mantenimientos asociados.
+
+Estructura: 
+            En este proyecto se usaran diccionarios para guardar toda la documentacion de los aviones, su matricula, modelo, numero de serie y sus mantenimientos asociados.
             Se utilizaran listas para guardar de forma mas especifica cada mantenimiento, que se hizo, que se cambio, que se verifico, etc.
             Me interesa incluir una base de conjuntos para poder manejar la disponibilidad de tecnicos.
-Alcance: Este codigo esta mayor mente dirigido a empresas de mantenimiento, ya que este permitira llevar un seguimiento organizado de los trabajos que se realicen, asi mismo facilitaria el acceso a dicha informacion en caso de requerirlo, mas especificamente lo utilizarian los tecnicos y las autoridades competentes (en caso de necesitarlo)
+
+Alcance: Este codigo esta mayor mente dirigido a empresas de mantenimiento, ya que este permitira llevar un seguimiento organizado de los trabajos que se realicen, asi mismo facilitaria el acceso a dicha informacion en caso de requerirlo, mas especificamente lo utilizarian los tecnicos y las autoridades competentes (en caso de necesitarlo). 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Pseudocodigo (muy general):
 Inicio 
