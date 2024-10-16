@@ -146,23 +146,61 @@ def seleccionar_opcion(opciones): #este codigo lo utilice del proyecto pasado de
 
 
 #CODIGO, parte donde se le muestra al usario
-contador=1
-while contador >0:
+contador=10
+while contador == 10:
+  
     print(f"¡Bienvenido al sistema ICARO!")
-    print(f"Para empezar, selecciona una opcion:")
-    opciones=["Registrar nuevo avion", "Registrar nuevo mantenimiento", "Ver historiales", "Estados de aviones", "Añadir nuevo tecnico", "Eliminar tecnico", "Asignacion de tecnicos", "Desasignar tecnico", "Ver tecnicos", "10", ]
+    print(f"Para empezar, selecciona una opcion: ")
+    opciones=["Registrar nuevo avion", "Registrar nuevo mantenimiento", "Ver historiales",
+               "Estados de aviones", "Añadir nuevo tecnico", "Eliminar tecnico", 
+               "Asignacion de tecnicos", "Desasignar tecnico", "Ver tecnicos", "cerrar programa", ]
     opcion=seleccionar_opcion(opciones)
 
     if opcion == "Registrar nuevo avion":              
-        matricula = input("introduce la matricula del avion: ")
-        modelo = input()
-        capacidad = input()
-        registrar_avion()
-
+        matricula = input("Introduzca la matricula del avion: ")
+        modelo = input("Introduzca el modelo del avion: ")
+        capacidad = input("Introduzca la capacidad del avion: ")
+        registrar_avion(matricula, modelo, capacidad)
+        
     elif opcion == "Registrar nuevo mantenimiento":
-        matricula = input("introduce la matricula del avion: ")
-        fecha = input("introduce la matricula del avion: ")
-        tipo = input("introduce la matricula del avion: ")
-        tecnico = input("introduce la matricula del avion: ")
-        observaciones = input("introduce la matricula del avion: ")
+        matricula = input("Introduzca la matricula del avion: ")
+        fecha = input("Introduzca la fecha del mantenimiento: ")
+        tipo = input("Introduzca el tipo de mantenimiengo (preventivo/correctivo): ")
+        tecnico = input("Introduzca el tecnico encargado de dicho mantenimiento: ")
+        observaciones = input("Introduzca las observaciones: ")
         registrar_mantenimiento(matricula, fecha, tipo, tecnico, observaciones)
+
+    elif opcion == "Ver historiales":
+        matricula = input("Introduzca la matricula del avion: ")
+        ver_historial(matricula)
+
+    elif opcion == "Estados de aviones":
+        matricula = input("Introduzca la matricula del avion: ")
+        estado_avion(matricula)
+
+    elif opcion == "Añadir nuevo tecnico":
+        nombre = input("Introduzca el nombre del tecnico: ")
+        especialidad = input("Introduzca la especialdad del tecnico: ")
+        añadir_tecnico(nombre, especialidad)
+
+    elif opcion == "Eliminar tecnico":
+        nombre = input("Introduzca el nombre del tecnico: ")
+        eliminar_tecnico(nombre)
+
+    elif opcion == "Asignacion de tecnicos":
+        nombre = input("Introduzca el nombre del tecnico: ")
+        asignar_tecnico(nombre)
+
+    elif opcion == "Desasignar tecnico":
+        nombre = input("Introduzca el nombre del tecnico: ")
+        desasignar_tecnico(nombre)
+
+    elif opcion == "Ver tecnicos":
+        nombre = input("Introduzca el nombre del tecnico: ")
+        ver_tecnico(nombre)
+
+    elif opcion == "cerrar programa":
+        contador += 10  
+        print("programa cerrado con exito!")
+        
+        
